@@ -1,0 +1,18 @@
+org: toroduque
+app: guitar-chords-api
+service: apollo-lambda
+provider:
+    name: aws
+    runtime: nodejs10.x
+functions:
+    graphql:
+        handler: graphql.graphqlHandler
+        events:
+        - http:
+            path: graphql
+            method: post
+            cors: true
+        - http:
+            path: graphql
+            method: get
+            cors: true

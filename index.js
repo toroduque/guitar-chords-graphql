@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { ApolloServer } = require ('apollo-server')
+const { ApolloServer } = require ('apollo-server-lambda')
 const { typeDefs } = require('./schemas')
 const MongoDB =  require('./MongoDB')
 const mongoDB = new MongoDB()
@@ -27,8 +27,10 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers })
 
 // The `listen` method launches a web server.
-server.listen().then( async ({url}) => {
-    console.log(`🚀 ApolloServer running in ${url}`)
-}).catch(console.error)
+// server.listen().then( async ({url}) => {
+//     console.log(`🚀 ApolloServer running in ${url}`)
+// }).catch(console.error)
 
+
+exports.grahpqlHandler = server.createHandler()
 

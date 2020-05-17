@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server')
+const { gql } = require('apollo-server-lambda')
 
 const typeDefs = gql`
     # This is how you write a comment on a Schema. It will start with a hash char.
