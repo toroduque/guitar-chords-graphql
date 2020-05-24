@@ -5,11 +5,10 @@ const typeDefs = gql`
     # This Book: type defines the queryable fields for every book in our database
 
     type Chord {
-        _id: ID
         root: String
         quality: String
-        strings: String
-        fingersPosition: String
+        strings: [String]
+        fingersPosition: [String]
     }
 
     # The Query type is special: it lists all of the avaliable queries that
@@ -21,7 +20,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addChord(root: String!, quality: String!, strings: String!, fingersPosition: String!): Chord
+        addChord(root: String!, quality: String!, strings: [String!], fingersPosition: [String!]): Chord
     }
 `
 

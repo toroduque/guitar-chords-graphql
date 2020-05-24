@@ -10,6 +10,8 @@ class MongoDB {
     async connect () {
         const client = await this.mongoClient.connect()
         this.db = client.db().collection('chords')
+
+        return this.db
     }
 
     async getChords () {

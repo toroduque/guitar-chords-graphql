@@ -4,8 +4,11 @@ service: apollo-lambda
 provider:
     name: aws
     runtime: nodejs10.x
+    environment:
+        MONGODB_URI: ${param:MONGODB_URI}
 functions:
     graphql:
+        # this is formatted as <FILENAME>.<HANDLER>
         handler: graphql.graphqlHandler
         events:
         - http:
