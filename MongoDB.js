@@ -23,16 +23,14 @@ class MongoDB {
         return chords
     }
 
-    async addChord (root, quality, strings, fingersPosition) {
+    async addChord (root, quality, position) {
         await this.connect()
 
-        const newChord = { root, quality, strings, fingersPosition }
+        const newChord = { root, quality, position }
         await this.db.insertOne(newChord)
 
         return newChord
     }
-
-
 }
 
 module.exports = MongoDB

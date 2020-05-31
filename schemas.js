@@ -7,8 +7,35 @@ const typeDefs = gql`
     type Chord {
         root: String
         quality: String
-        strings: [String]
-        fingersPosition: [String]
+        position: Position
+    }
+
+    type Position {
+        E: StringPosition
+        A: StringPosition
+        D: StringPosition
+        G: StringPosition
+        B: StringPosition
+        e: StringPosition
+    }
+
+    type StringPosition {
+        fret: Int
+        finger: Int
+    }
+
+    input StringPositionInput {
+        fret: Int
+        finger: Int
+    }
+
+    input PositionInput {
+        E: StringPositionInput
+        A: StringPositionInput
+        D: StringPositionInput
+        G: StringPositionInput
+        B: StringPositionInput
+        e: StringPositionInput
     }
 
     # The Query type is special: it lists all of the avaliable queries that
@@ -20,7 +47,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addChord(root: String!, quality: String!, strings: [String!], fingersPosition: [String!]): Chord
+        addChord(root: String!, quality: String!, position: PositionInput!): Chord
     }
 `
 

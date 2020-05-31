@@ -13,9 +13,9 @@ const resolvers = {
     },
     
     Mutation: {
-        addChord: async (_, { root, quality, strings, fingersPosition }, { dataSources }) => {
+        addChord: async (_, { root, quality, position }, { dataSources }) => {
             const { db } = dataSources
-            const newChord = await db.addChord(root, quality, strings, fingersPosition)
+            const newChord = await db.addChord(root, quality, position)
             return newChord
         }
     }
